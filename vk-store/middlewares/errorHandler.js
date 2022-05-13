@@ -1,5 +1,5 @@
 function errorsLog(err, req, res, next) {
-  console.error(err);
+  //console.error(err);
   next(err);
 }
 
