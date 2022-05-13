@@ -1,4 +1,6 @@
-const { faker } = require('@faker-js/faker');
+const {
+  faker
+} = require('@faker-js/faker');
 
 class productsService {
 
@@ -10,7 +12,7 @@ class productsService {
   generate() {
     const limit = 100;
 
-    for(let index = 0; index < limit; index++) {
+    for (let index = 0; index < limit; index++) {
       this.products.push({
         id: faker.datatype.uuid(),
         name: faker.commerce.productName(),
@@ -38,13 +40,14 @@ class productsService {
   }
 
   async findOne(id) {
+    const name = this.getTotal();
     return this.products.find(item => item.id === id);
   }
 
   async update(id, changes) {
     const index = this.products.findIndex(item => item.id === id);
 
-    if(index === -1) {
+    if (index === -1) {
       throw new Error('Product not found');
     }
 
@@ -59,12 +62,14 @@ class productsService {
   async delete(id) {
     const index = this.products.findIndex(item => item.id === id);
 
-    if(index === -1) {
+    if (index === -1) {
       throw new Error('Product not found');
     }
 
     this.products.splice(index, 1);
-    return { id };
+    return {
+      id
+    };
   }
 
 }
